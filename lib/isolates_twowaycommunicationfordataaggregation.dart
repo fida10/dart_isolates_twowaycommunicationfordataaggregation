@@ -18,47 +18,6 @@ of data points to an isolate for aggregation (e.g., summing up values).
 The isolate should perform the aggregation and send back the result. 
 The main isolate can send additional data points for aggregation in real-time.
  */
-// Isolate? isolate;
-// num total = 0;
-
-// aggregateDataInIsolate(List<int> input) async {
-//   final receivedFromWorker = ReceivePort();
-//   final completer = Completer();
-//   SendPort? sendToWorker;
-
-//   isolate ??= await Isolate.spawn(agreggator, receivedFromWorker.sendPort);
-
-//   receivedFromWorker.listen((message) {
-//     print("Message from worker: $message");
-//     if (message is SendPort) {
-//       sendToWorker = message;
-//       sendToWorker?.send(input);
-//     }
-//     if (message is num) {
-//       completer.complete(message);
-//     }
-//   });
-//   receivedFromWorker.close();
-
-//   return completer.future;
-// }
-
-// agreggator(SendPort sendToMain) {
-//   final receivedFromMain = ReceivePort();
-//   sendToMain.send(receivedFromMain.sendPort);
-
-//   receivedFromMain.listen((message) {
-//     print("Message from main: $message");
-//     if (message is List) {
-//       for (var number in message) {
-//         total += number;
-//       }
-//       sendToMain.send(total);
-//     }
-//   });
-
-//   receivedFromMain.close();
-// }
 
 MainWorker? mainWorker;
 
